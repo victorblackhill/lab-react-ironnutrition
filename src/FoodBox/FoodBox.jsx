@@ -1,12 +1,12 @@
 import React from 'react';
 
-function FoodBox({ food,i }) {
+function FoodBox({ food,i,addAMeal,addQuant }) {
   return (
     <div className="box" key={i}>
       <article className="media">
         <div className="media-left">
           <figure className="image is-64x64">
-            <img src={food.image} />
+            <img src={food.image}/>
           </figure>
         </div>
         <div className="media-content">
@@ -20,10 +20,10 @@ function FoodBox({ food,i }) {
         <div className="media-right">
           <div className="field has-addons">
             <div className="control">
-              <input className="input" type="number" value={food.quantity} readOnly/>
+              <input className="input" type="number" value={1} onChange = {addQuant} />
             </div>
             <div className="control">
-              <button className="button is-info">+</button>
+              <button className="button is-info" onClick={addAMeal}>+</button>
             </div>
           </div>
         </div>

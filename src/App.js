@@ -14,6 +14,7 @@ function App() {
   //"Classe foods"
   const [foods,setFoods] = useState(myFoods)
   const addFood = (food)=>{setFoods([...foods,food])}
+  const addQuant = (e)=>{setFoods([...foods.filter((food,i) => !(e.target.key === i) )])}
   
 
   //button appear/disapear
@@ -31,13 +32,15 @@ function App() {
     setTodaysFood([...todaysFood,food])
   }
 
+  
+
 
   return (
     <div className="App">
       <header className="App-header">  
         <button onClick={toggleDisplayAdd}>Add Food</button>  
 
-        <> {displayAdd ? <AddFood addFood = {addFood} toggleDisplayAdd={toggleDisplayAdd} /> : <></> }</>
+        <> {displayAdd ? <AddFood  addFood = {addFood} toggleDisplayAdd={toggleDisplayAdd} addQuant={addQuant} /> : <></> }</>
         <input placeholder="Search" onChange={mySearch}></input>
 
         <div className="deux-listes">
