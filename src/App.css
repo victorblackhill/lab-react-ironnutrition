@@ -13,6 +13,16 @@
   }
 }
 
+.deux-listes {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+
+.deux-listes div{
+  margin:10px
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
