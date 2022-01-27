@@ -20,7 +20,6 @@ function TheList({todaysFood}){
                                         }
     })
     
-    //console.log(curr)
     return (
         <div>
             <h2>Today's Food</h2>

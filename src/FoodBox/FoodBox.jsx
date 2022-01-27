@@ -2,7 +2,6 @@ import React from 'react';
 
 function FoodBox({ food,i,addAMeal,addQuant }) {
 
-  console.log(food)
 
   return (
     <div className="box" key={i}>
