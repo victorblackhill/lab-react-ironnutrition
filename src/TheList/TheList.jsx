@@ -20,14 +20,14 @@ function TheList({todaysFood}){
                                         }
     })
     
-    console.log(curr)
+    //console.log(curr)
     return (
         <div>
             <h2>Today's Food</h2>
             <ul>
-                {Object.keys(curr).map((food,i) => <li key={i}> {curr[food].name} = {curr[food].calories} and {curr[food].number}</li> )}
+                {Object.keys(curr).map((food,i) => <li key={i}> {curr[food].number} {curr[food].name} = {curr[food].calories * curr[food].number} calories</li> )}
             </ul>
-            <span>Total = {todaysFood.reduce((arr,food)=>Number(arr)+food.calories,0)} </span>
+            <span>Total = {Object.keys(curr).reduce((arr,food)=>Number(arr)+curr[food].calories * curr[food].number ,0)} </span>
         </div>
     )
 

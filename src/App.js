@@ -9,14 +9,14 @@ import TheList from "./TheList/TheList.jsx"
 
 
 function App() {
-
+  
   
   //"Classe foods"
   const [foods,setFoods] = useState(myFoods)
   const addFood = (food)=>{setFoods([...foods,food])}
-  const addQuant = (e)=>{setFoods([...foods.filter((food,i) => !(e.target.key === i) )])}
-  
 
+
+  
   //button appear/disapear
   const [displayAdd,setDisplayAdd] = useState(false)
   const toggleDisplayAdd = () => {setDisplayAdd(!displayAdd)}
@@ -27,25 +27,34 @@ function App() {
     setSearchFood( foods.filter( (food)=> e.target.value.toLowerCase() === food.name.toLowerCase().slice(0,e.target.value.length) ))
   }
   
-  const [todaysFood,setTodaysFood]=useState(foods.slice(0,3))
-  const addTodaysFood = (food)=>{
-    setTodaysFood([...todaysFood,food])
+  const [todaysFood,setTodaysFood]=useState([])
+  const addAMeal = (e)=>{
+    setTodaysFood([...todaysFood,foods[e.target.getAttribute("listindex")]])
   }
 
+  const addQuant = (e)=>{
+    const tableCopy = [...foods]
+    const itemCopy = {...foods[e.target.getAttribute("listindex")],
+                        quantity:Number(e.target.value)}
+    tableCopy[e.target.getAttribute("listindex")] = itemCopy
+    console.log(tableCopy)
+    setFoods(tableCopy)
+    setSearchFood(tableCopy)
+  }
   
-
-
+  console.log(foods,searchFood)
+ 
   return (
     <div className="App">
       <header className="App-header">  
         <button onClick={toggleDisplayAdd}>Add Food</button>  
 
-        <> {displayAdd ? <AddFood  addFood = {addFood} toggleDisplayAdd={toggleDisplayAdd} addQuant={addQuant} /> : <></> }</>
+        <> {displayAdd ? <AddFood  addFood = {addFood} toggleDisplayAdd={toggleDisplayAdd} /> : <></> }</>
         <input placeholder="Search" onChange={mySearch}></input>
 
         <div className="deux-listes">
           <div>
-            {searchFood.map((food,i)=> {return <FoodBox food={food} i={i} />} )}
+            {searchFood.map((food,i)=> {return <FoodBox food={food} i={i} addQuant={addQuant} addAMeal={addAMeal}/>} )}
           </div>
 
         

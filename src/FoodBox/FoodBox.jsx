@@ -1,6 +1,9 @@
 import React from 'react';
 
 function FoodBox({ food,i,addAMeal,addQuant }) {
+
+  console.log(food)
+
   return (
     <div className="box" key={i}>
       <article className="media">
@@ -20,10 +23,10 @@ function FoodBox({ food,i,addAMeal,addQuant }) {
         <div className="media-right">
           <div className="field has-addons">
             <div className="control">
-              <input className="input" type="number" value={1} onChange = {addQuant} />
+              <input className="input" type="number" listindex={i} key={i} value={food.quantity} onChange = {addQuant} />
             </div>
             <div className="control">
-              <button className="button is-info" onClick={addAMeal}>+</button>
+              <button className="button is-info"  listindex={i} key={i} onClick={addAMeal}>+</button>
             </div>
           </div>
         </div>
